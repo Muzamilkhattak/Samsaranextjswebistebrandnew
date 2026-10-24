@@ -540,7 +540,7 @@ export default function Testimonials() {
                   <div className="input-wrap is-one-third">
                     <span className="select">
                       <select  id="Schedule" name="ProcedureOfInterest" aria-label="Procedure of Interest" aria-required="true" required defaultValue="">
-                        <option value disabled >Procedure of Interest*</option>
+                        <option value="" disabled>Procedure of Interest*</option>
                         <option value="Injectables">Injectables</option>
                         <option value="Dermal Fillers and Neuromodulators">Dermal Fillers and
                           Neuromodulators</option>
@@ -571,7 +571,7 @@ export default function Testimonials() {
                   <div className="input-wrap is-one-third">
                     <span className="select">
                       <select  id="HearOfUs" name="HearOfUs" aria-label="How Did You Hear Of Us*" required defaultValue="">
-                        <option value disabled >How Did You Hear of Us?*</option>
+                        <option value="" disabled>How Did You Hear of Us?*</option>
                         <option value="Website">Website</option>
                         <option value="Friend">Friend</option>
                         <option value="Google Search">Google Search</option>
@@ -585,14 +585,14 @@ export default function Testimonials() {
                   <div className="input-wrap is-one-third">
                     <span className="select">
                       <select  id="BestTime" name="BestTime" aria-label="Best Time To Reach You" required defaultValue="">
-                        <option value disabled >Best Time To Reach You*</option>
+                        <option value="" disabled>Best Time To Reach You*</option>
                         <option value="Morning">Morning</option>
                         <option value="Afternoon">Afternoon</option>
                       </select>
                     </span>
                   </div>
                   <div className="input-wrap text is-full">
-                    <textarea id="Message" name="Message" aria-label="Message" data-hj-whitelist placeholder="How can we assist your aesthetic needs?" type="text" maxLength={280} required defaultValue={""} />
+                    <textarea id="Message" name="Message" aria-label="Message" data-hj-whitelist placeholder="How can we assist your aesthetic needs?" maxLength={280} required defaultValue={""} />
                   </div>
                   <div className="input-wrap is-full checkbox mb10" style={{paddingTop: 0}}>
                     <input name="TextOptin" aria-label="Yes Opt-in to Text" placeholder="Yes Opt-in to Text" type="checkbox" defaultValue="Yes Opt-in to Text" />

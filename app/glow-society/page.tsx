@@ -238,7 +238,7 @@ export default function GlowSociety() {
                     </span>
                   </div>
                   <div className="input-wrap text is-full">
-                    <textarea aria-label="Message" data-hj-whitelist id="Message" maxLength={280} name="Message" placeholder="How can we assist your aesthetic needs?" required type="text" defaultValue={""} />
+                    <textarea aria-label="Message" data-hj-whitelist id="Message" maxLength={280} name="Message" placeholder="How can we assist your aesthetic needs?" required defaultValue={""} />
                   </div>
                   <div className="input-wrap is-full checkbox mb10" style={{paddingTop: 0}}>
                     <input aria-label="Yes Opt-in to Text" name="TextOptin" placeholder="Yes Opt-in to Text" type="checkbox" defaultValue="Yes Opt-in to Text" />

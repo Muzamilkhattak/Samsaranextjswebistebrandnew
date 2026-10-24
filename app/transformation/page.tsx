@@ -3,17 +3,6 @@ import React, { useEffect } from 'react';
 import Link from 'next/link';
 import Script from 'next/script';
 
-// Declare custom element for TypeScript
-declare global {
-  namespace JSX {
-    interface IntrinsicElements {
-      'ageless-embed-launcher': React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement> & {
-        'data-ageless-url'?: string;
-        'data-ageless-mode'?: string;
-      };
-    }
-  }
-}
 
 export default function TransformationPage() {
   useEffect(() => {
@@ -213,7 +202,6 @@ export default function TransformationPage() {
                             maxLength={280}
                             placeholder="How can we assist your aesthetic needs?"
                             aria-label="Message"
-                            type="text"
                             required
                             defaultValue=""
                           />
