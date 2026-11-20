@@ -21811,6 +21811,9 @@ body .uwy.userway_p1 .uai {
 		width: 100% !important;
 		max-height: none !important;
 		height: auto !important;
+		aspect-ratio: 2.35 / 1 !important;
+		object-fit: cover !important;
+		object-position: center center !important;
 		border-radius: 0 !important;
 		box-shadow: none !important;
 	}
