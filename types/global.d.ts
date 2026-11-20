@@ -11,6 +11,12 @@ declare global {
         },
         HTMLElement
       >;
+      'elevenlabs-convai': React.DetailedHTMLProps<
+        React.HTMLAttributes<HTMLElement> & {
+          'agent-id'?: string;
+        },
+        HTMLElement
+      >;
     }
   }
 
@@ -21,6 +27,12 @@ declare global {
           'data-ageless-url'?: string;
           'data-ageless-mode'?: string;
           style?: React.CSSProperties;
+        },
+        HTMLElement
+      >;
+      'elevenlabs-convai': React.DetailedHTMLProps<
+        React.HTMLAttributes<HTMLElement> & {
+          'agent-id'?: string;
         },
         HTMLElement
       >;
