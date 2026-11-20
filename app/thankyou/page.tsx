@@ -21,7 +21,7 @@ export default function ThankYou() {
 
       <style dangerouslySetInnerHTML={{ __html: `
         .thankyou-page {
-          background-image: url('/booking-images/background.jpg');
+          background-image: url('/booking-images/background.webp');
           background-size: cover;
           background-position: center;
           background-repeat: no-repeat;

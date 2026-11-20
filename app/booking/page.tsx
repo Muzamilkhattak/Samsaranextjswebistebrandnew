@@ -124,7 +124,7 @@ export default function Booking() {
       <style dangerouslySetInnerHTML={{__html: `
         .booking-page .vh-100 { min-height: 100vh; height: auto; padding: 50px 0; }
         .booking-page {
-            background-image: url('/booking-images/background.jpg');
+            background-image: url('/booking-images/background.webp');
             background-size: cover;
             background-position: center;
             background-repeat: no-repeat;

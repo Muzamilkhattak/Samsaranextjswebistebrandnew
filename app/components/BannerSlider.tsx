@@ -15,21 +15,21 @@ const DEFAULT_SLIDES: BannerSlide[] = [
 
   {
     id: 'Black-Friday',
-    image: '/assets/img/Bannersliderimages/Samsara 023 final banner sized-02.jpg',
+    image: '/assets/img/Bannersliderimages/Samsara 023 final banner sized-02.webp',
     alt: 'Black Friday samsaramedspa Banner',
     link: 'https://samsaraaestheticswellness.myaestheticrecord.com/online-booking',
     isExternal: true,
   },
   {
     id: 'Cyber-Monday',
-    image: '/assets/img/Bannersliderimages/Samsara 023 final banner sized-03.jpg',
+    image: '/assets/img/Bannersliderimages/Samsara 023 final banner sized-03.webp',
     alt: 'Cyber Monday Online Gift Card Offer',
     link: 'https://samsaraaestheticswellness.myaestheticrecord.com/online-booking/giftcards',
     isExternal: true,
   },
   {
     id: 'ai-experience',
-    image: '/assets/img/Bannersliderimages/Samsara 023 final banner sized-01.jpg',
+    image: '/assets/img/Bannersliderimages/Samsara 023 final banner sized-01.webp',
     alt: 'Aesthetic Wellness AI Experience Banner',
     link: '/transformation/',
     isExternal: false,
