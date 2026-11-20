@@ -19,6 +19,29 @@ export default function RootLayout({
     <html lang="en-US" className="no-js" suppressHydrationWarning>
       <head>
         <link rel="shortcut icon" type="image/png" href="/favicon.png" />
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              (function() {
+                try {
+                  var observer = new MutationObserver(function(mutations) {
+                    for (var i = 0; i < mutations.length; i++) {
+                      var m = mutations[i];
+                      if (m.type === 'attributes' && m.attributeName === 'bis_skin_checked') {
+                        m.target.removeAttribute('bis_skin_checked');
+                      }
+                    }
+                  });
+                  observer.observe(document.documentElement, {
+                    attributes: true,
+                    subtree: true,
+                    attributeFilter: ['bis_skin_checked']
+                  });
+                } catch(e) {}
+              })();
+            `,
+          }}
+        />
       </head>
       <body className="home" suppressHydrationWarning>
         <Script id="google-tag-manager" strategy="afterInteractive">

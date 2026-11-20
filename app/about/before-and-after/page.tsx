@@ -1,190 +1,395 @@
 "use client";
-import React from 'react';
-import Link from 'next/link';
 
-interface BeforeAfterPair {
+import React, { useState } from 'react';
+
+interface LedgerItem {
   id: string;
-  before: string;
-  after: string;
-  alt: string;
+  category: 'neurotoxin' | 'prf' | 'laser' | 'hydrafacial';
+  title: string;
+  beforeImg: string;
+  afterImg: string;
+  altBefore: string;
+  altAfter: string;
+  area: string;
+  timeline: string;
+  timelineCardValue: string;
+  timelineCardArea: string;
+  bookingUrl: string;
 }
 
-// All images existing in samsara-nextjs/public/assets/img/beforeandafterresults
-const RESULTS_PAIRS: BeforeAfterPair[] = [
+const LEDGER_ITEMS: LedgerItem[] = [
   {
-    id: 'neurotoxin-1',
-    before: '/assets/img/beforeandafterresults/Neurotoxin Before.webp',
-    after: '/assets/img/beforeandafterresults/Neurotoxin After.webp',
-    alt: 'Neurotoxin Wrinkle Smoothing Result 1',
+    id: 'item-1',
+    category: 'neurotoxin',
+    title: 'Botox Before & After',
+    beforeImg: '/assets/img/beforeandafterresults/Before1.webp',
+    afterImg: '/assets/img/beforeandafterresults/After1.webp',
+    altBefore: 'Before Botox Treatment',
+    altAfter: 'After Botox Treatment',
+    area: 'Glabella & Frontalis',
+    timeline: '7–14 days',
+    timelineCardValue: '7–14 days',
+    timelineCardArea: 'Glabella & Frontalis',
+    bookingUrl: 'https://samsaraaestheticswellness.myaestheticrecord.com/online-booking',
   },
   {
-    id: 'neurotoxin-2',
-    before: '/assets/img/beforeandafterresults/Neurotoxin before 2.webp',
-    after: '/assets/img/beforeandafterresults/Neurotoxin after 2.webp',
-    alt: 'Neurotoxin Wrinkle Smoothing Result 2',
-  },
-
-  {
-    id: 'facial-glow-2',
-    before: '/assets/img/beforeandafterresults/before3.webp',
-    after: '/assets/img/beforeandafterresults/after3.webp',
-    alt: 'Facial Rejuvenation & Skin Glow Result 2',
-  },
-  {
-    id: 'prf-1',
-    before: '/assets/img/beforeandafterresults/PRF before.webp',
-    after: '/assets/img/beforeandafterresults/PRFafter.webp',
-    alt: 'PRF Skin Restoration Result',
+    id: 'item-2',
+    category: 'prf',
+    title: 'PRF Before & After',
+    beforeImg: '/assets/img/beforeandafterresults/Before2.webp',
+    afterImg: '/assets/img/beforeandafterresults/After2.webp',
+    altBefore: 'Before PRF Treatment',
+    altAfter: 'After PRF Treatment',
+    area: 'Undereyes',
+    timeline: 'Immediately after',
+    timelineCardValue: 'Immediately after',
+    timelineCardArea: 'Undereyes',
+    bookingUrl: 'https://samsaraaestheticswellness.myaestheticrecord.com/online-booking',
   },
   {
-    id: 'laser-hair-removal',
-    before: '/assets/img/beforeandafterresults/Laser hair removal  after.webp',
-    after: '/assets/img/beforeandafterresults/Laser hair removal before.webp',
-    alt: 'Laser Hair Removal Result',
+    id: 'item-3',
+    category: 'laser',
+    title: 'Laser Hair Removal Before & After',
+    beforeImg: '/assets/img/beforeandafterresults/Laser hair removal  before.webp',
+    afterImg: '/assets/img/beforeandafterresults/Laser hair removal After.webp',
+    altBefore: 'Before Laser Hair Removal',
+    altAfter: 'After Laser Hair Removal',
+    area: 'Underarms',
+    timeline: 'Session 3 of 6',
+    timelineCardValue: 'Session 3 of 6',
+    timelineCardArea: 'Underarms',
+    bookingUrl: 'https://samsaraaestheticswellness.myaestheticrecord.com/online-booking',
   },
   {
-    id: 'before-1',
-    before: '/assets/img/beforeandafterresults/before2.webp',
-    after: '/assets/img/beforeandafterresults/after2.webp',
-    alt: 'Facial Rejuvenation & Skin Glow Result 1',
+    id: 'item-4',
+    category: 'neurotoxin',
+    title: 'Jeuveau Before & After',
+    beforeImg: '/assets/img/beforeandafterresults/Neurotoxin before 2.webp',
+    afterImg: '/assets/img/beforeandafterresults/Neurotoxin after 2.webp',
+    altBefore: 'Before Jeuveau Treatment',
+    altAfter: 'After Jeuveau Treatment',
+    area: 'Frontalis, Glabella, Crows Feet',
+    timeline: '2–5 days',
+    timelineCardValue: '2–5 days',
+    timelineCardArea: 'Frontalis, Glabella, Crows Feet',
+    bookingUrl: 'https://samsaraaestheticswellness.myaestheticrecord.com/online-booking',
   },
-
+  {
+    id: 'item-5',
+    category: 'neurotoxin',
+    title: 'Botox Before & After',
+    beforeImg: '/assets/img/beforeandafterresults/Neurotoxin Before.webp',
+    afterImg: '/assets/img/beforeandafterresults/Neurotoxin After.webp',
+    altBefore: 'Before Botox Treatment',
+    altAfter: 'After Botox Treatment',
+    area: 'Frontalis & Glabella',
+    timeline: 'Timeline - 2 weeks',
+    timelineCardValue: 'Timeline - 2 weeks',
+    timelineCardArea: 'Frontalis & Glabella',
+    bookingUrl: 'https://samsaraaestheticswellness.myaestheticrecord.com/online-booking',
+  },
+  {
+    id: 'item-6',
+    category: 'prf',
+    title: 'PRF Before & After',
+    beforeImg: '/assets/img/beforeandafterresults/PRF before.webp',
+    afterImg: '/assets/img/beforeandafterresults/PRFafter.webp',
+    altBefore: 'Before PRF Treatment',
+    altAfter: 'After PRF Treatment',
+    area: 'Under Eyes',
+    timeline: 'Results immediately after',
+    timelineCardValue: 'Results immediately after',
+    timelineCardArea: 'Under Eyes',
+    bookingUrl: 'https://samsaraaestheticswellness.myaestheticrecord.com/online-booking',
+  },
+  {
+    id: 'item-7',
+    category: 'hydrafacial',
+    title: 'HydraFacial Before & After',
+    beforeImg: '/assets/img/beforeandafterresults/beforehydrafacial1.webp',
+    afterImg: '/assets/img/beforeandafterresults/afterhydrafacial1.webp',
+    altBefore: 'Before HydraFacial Treatment',
+    altAfter: 'After HydraFacial Treatment',
+    area: 'Full Face & Complexion',
+    timeline: 'Immediately after',
+    timelineCardValue: 'Immediately after',
+    timelineCardArea: 'Full Face & Complexion',
+    bookingUrl: 'https://samsaraaestheticswellness.myaestheticrecord.com/online-booking',
+  },
+  {
+    id: 'item-8',
+    category: 'hydrafacial',
+    title: 'HydraFacial Glow & Hydration',
+    beforeImg: '/assets/img/beforeandafterresults/beforehydrafacial2.webp',
+    afterImg: '/assets/img/beforeandafterresults/afterhydrafacial2.webp',
+    altBefore: 'Before HydraFacial Glow Treatment',
+    altAfter: 'After HydraFacial Glow Treatment',
+    area: 'Full Face & Jawline',
+    timeline: 'Immediately after',
+    timelineCardValue: 'Immediately after',
+    timelineCardArea: 'Full Face & Jawline',
+    bookingUrl: 'https://samsaraaestheticswellness.myaestheticrecord.com/online-booking',
+  },
+  {
+    id: 'item-9',
+    category: 'hydrafacial',
+    title: 'HydraFacial Pore Refining & Clarifying',
+    beforeImg: '/assets/img/beforeandafterresults/beforehydrafacial3.webp',
+    afterImg: '/assets/img/beforeandafterresults/afterhydrafacial3.webp',
+    altBefore: 'Before HydraFacial Pore Refining Treatment',
+    altAfter: 'After HydraFacial Pore Refining Treatment',
+    area: 'Full Face & Cheeks',
+    timeline: 'Immediately after',
+    timelineCardValue: 'Immediately after',
+    timelineCardArea: 'Full Face & Cheeks',
+    bookingUrl: 'https://samsaraaestheticswellness.myaestheticrecord.com/online-booking',
+  },
+  {
+    id: 'item-10',
+    category: 'hydrafacial',
+    title: 'HydraFacial Skin Rejuvenation',
+    beforeImg: '/assets/img/beforeandafterresults/beforehydrafacial4.webp',
+    afterImg: '/assets/img/beforeandafterresults/afterhydrafacial4.webp',
+    altBefore: 'Before HydraFacial Skin Rejuvenation',
+    altAfter: 'After HydraFacial Skin Rejuvenation',
+    area: 'Full Face & Lip Area',
+    timeline: 'Immediately after',
+    timelineCardValue: 'Immediately after',
+    timelineCardArea: 'Full Face & Lip Area',
+    bookingUrl: 'https://samsaraaestheticswellness.myaestheticrecord.com/online-booking',
+  },
 ];
 
 export default function BeforeAndAfterResultsPage() {
-  return (
-    <main style={{ backgroundColor: '#ffffff', minHeight: '100vh' }}>
-      {/* Mobile Sticky CTA */}
-      <div className="mobile-cta">
-        <a
-          href="tel:(954) 688-7255"
-          onClick={() => {
-            if (typeof window !== 'undefined' && (window as any).gtag) {
-              (window as any).gtag('event', 'phone_number_click');
-            }
-          }}
-          aria-label="Call Samsara Aesthetics & Wellness on the phone today"
-        >
-          (954) 688-7255
-        </a>
-        <Link href="/contact/"> Appointment</Link>
-      </div>
+  const [activeFilter, setActiveFilter] = useState<'all' | 'neurotoxin' | 'prf' | 'laser' | 'hydrafacial'>('all');
 
-      {/* Main Before & After Simple Gallery */}
-      <section style={{ paddingTop: '140px', paddingBottom: '90px' }}>
-        <div className="container" style={{ maxWidth: '1440px', margin: '0 auto', padding: '0 20px' }}>
-          <div className="text-center" style={{ maxWidth: '850px', margin: '0 auto 50px auto' }}>
+  const filteredItems = activeFilter === 'all'
+    ? LEDGER_ITEMS
+    : LEDGER_ITEMS.filter((item) => item.category === activeFilter);
+
+  return (
+    <main style={{ backgroundColor: '#ffffff', minHeight: '100vh' }} suppressHydrationWarning>
+      {/* Masthead Banner */}
+      <section
+        className="ba-results-masthead bg-image flexy is-vcentered"
+        style={{
+          backgroundImage: "url('/assets/img/bg/marble-green-01.jpg')",
+          backgroundSize: 'cover',
+          backgroundPosition: 'center center',
+          backgroundRepeat: 'no-repeat',
+          height: '350px',
+          minHeight: '350px',
+          maxHeight: '350px',
+          marginBottom: 0,
+          display: 'flex',
+          flexDirection: 'column',
+          alignItems: 'center',
+          justifyContent: 'center',
+          textAlign: 'center',
+          paddingTop: '85px',
+          paddingBottom: 0,
+          paddingLeft: '20px',
+          paddingRight: '20px',
+          boxSizing: 'border-box',
+          width: '100%',
+          position: 'relative',
+        }}
+      >
+        <div
+          className="masthead__content text-center"
+          style={{
+            position: 'relative',
+            left: 'auto',
+            right: 'auto',
+            top: 'auto',
+            bottom: 'auto',
+            transform: 'none',
+            width: '100%',
+            maxWidth: '1100px',
+            margin: '0 auto',
+            padding: 0,
+            display: 'flex',
+            flexDirection: 'column',
+            alignItems: 'center',
+            justifyContent: 'center',
+            textAlign: 'center',
+            zIndex: 5,
+          }}
+        >
+          <h1
+            className="animate fadeIn white title-lg uppercase"
+            style={{
+              width: '100%',
+              margin: '0 auto',
+              textAlign: 'center',
+              color: '#ffffff',
+              fontSize: 'clamp(2.2rem, 3.8vw, 3rem)',
+              textShadow: '0 2px 8px rgba(0,0,0,0.35)',
+              display: 'block',
+            }}
+          >
+            Real Results
+            <br />
+            <span
+              className="block subhead white animate"
+              style={{
+                width: '100%',
+                margin: '10px auto 0 auto',
+                textAlign: 'center',
+                fontSize: 'clamp(1.2rem, 2vw, 1.5rem)',
+                fontWeight: 400,
+                display: 'block',
+                textTransform: 'none',
+                color: '#ffffff',
+                textShadow: '0 2px 6px rgba(0,0,0,0.3)',
+              }}
+            >
+              Before &amp; After Gallery
+            </span>
+          </h1>
+        </div>
+      </section>
+
+      {/* Main Content & Tabs Section */}
+      <section style={{ paddingTop: '20px', paddingBottom: '80px' }}>
+        <div className="container">
+          <div className="mw1600 text-center" style={{ marginTop: 0, marginBottom: '40px', padding: '0 20px' }}>
             <h2
               className="title-md uppercase"
               style={{
                 color: '#004438',
-                fontSize: 'clamp(1.9rem, 4vw, 2.6rem)',
+                fontSize: 'clamp(28px, 3.5vw, 42px)',
                 marginTop: 0,
-                marginBottom: '15px',
-                fontWeight: 700,
+                marginBottom: '12px',
+                fontFamily: "'novecento-sans', sans-serif",
+                fontWeight: 300,
+                letterSpacing: '0.05em',
               }}
             >
               Transformative Treatments
             </h2>
-            <p style={{ fontSize: '1.15rem', color: '#555555', margin: 0, lineHeight: 1.6 }}>
-              View the incredible improvements our patients have achieved through our customized aesthetic treatments.
+            <p
+              style={{
+                fontSize: '1.1rem',
+                maxWidth: '780px',
+                margin: '0 auto 18px',
+                color: '#5a6e65',
+                fontFamily: "'proxima-nova', sans-serif",
+                lineHeight: 1.6,
+              }}
+            >
+              Every treatment details what it is, how results unfold over time, and the real outcomes achieved by our patients.
             </p>
           </div>
 
-          <style dangerouslySetInnerHTML={{
-            __html: `
-            .results-gallery-simple {
-              display: grid;
-              grid-template-columns: 1fr;
-              gap: 40px;
-              max-width: 1400px;
-              margin: 0 auto;
-            }
-            @media (min-width: 1024px) {
-              .results-gallery-simple {
-                grid-template-columns: 1fr 1fr;
-              }
-            }
-            .ba-pair {
-              display: flex;
-              flex-direction: row;
-              align-items: center;
-              justify-content: center;
-              width: 100%;
-              margin: 0 auto;
-              border-radius: 12px;
-              overflow: hidden;
-              box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
-              background-color: #000000;
-              transition: transform 0.3s ease, box-shadow 0.3s ease;
-            }
-            .ba-pair:hover {
-              transform: translateY(-4px);
-              box-shadow: 0 12px 30px rgba(0, 68, 56, 0.15);
-            }
-            .ba-pair > div {
-              flex: 1;
-              min-width: 0;
-              position: relative;
-            }
-            .ba-pair img {
-              width: 100%;
-              height: auto;
-              display: block;
-              border-radius: 0 !important;
-            }
-            .ba-label {
-              position: absolute;
-              top: 14px;
-              left: 14px;
-              background: rgba(0, 68, 56, 0.85);
-              color: #ffffff;
-              padding: 6px 16px;
-              border-radius: 20px;
-              font-size: 13px;
-              font-weight: 700;
-              font-family: var(--font-proxima-nova, sans-serif);
-              text-transform: uppercase;
-              letter-spacing: 1px;
-              box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
-              backdrop-filter: blur(4px);
-              pointer-events: none;
-            }
-            @media (max-width: 600px) {
-              .results-gallery-simple {
-                gap: 24px;
-              }
-              .ba-label {
-                top: 8px;
-                left: 8px;
-                padding: 4px 10px;
-                font-size: 11px;
-                border-radius: 14px;
-              }
-            }
-          `}} />
+          {/* Category Filter Chips */}
+          <div className="ledger-chips" role="tablist" aria-label="Filter treatments by category">
+            <button
+              type="button"
+              className={`ledger-chip ${activeFilter === 'all' ? 'active' : ''}`}
+              onClick={() => setActiveFilter('all')}
+              role="tab"
+              aria-selected={activeFilter === 'all'}
+            >
+              All Treatments
+            </button>
+            <button
+              type="button"
+              className={`ledger-chip ${activeFilter === 'neurotoxin' ? 'active' : ''}`}
+              onClick={() => setActiveFilter('neurotoxin')}
+              role="tab"
+              aria-selected={activeFilter === 'neurotoxin'}
+            >
+              Botox &amp; Jeuveau
+            </button>
+            <button
+              type="button"
+              className={`ledger-chip ${activeFilter === 'prf' ? 'active' : ''}`}
+              onClick={() => setActiveFilter('prf')}
+              role="tab"
+              aria-selected={activeFilter === 'prf'}
+            >
+              PRF Therapy
+            </button>
+            <button
+              type="button"
+              className={`ledger-chip ${activeFilter === 'laser' ? 'active' : ''}`}
+              onClick={() => setActiveFilter('laser')}
+              role="tab"
+              aria-selected={activeFilter === 'laser'}
+            >
+              Laser
+            </button>
+            <button
+              type="button"
+              className={`ledger-chip ${activeFilter === 'hydrafacial' ? 'active' : ''}`}
+              onClick={() => setActiveFilter('hydrafacial')}
+              role="tab"
+              aria-selected={activeFilter === 'hydrafacial'}
+            >
+              HydraFacial
+            </button>
+          </div>
 
-          {/* Clean Side-by-Side Images */}
-          <div className="results-gallery-simple">
-            {RESULTS_PAIRS.map((item) => (
-              <div key={item.id} className="ba-pair">
-                <div>
-                  <img
-                    src={item.before}
-                    alt={`Before Treatment - ${item.alt}`}
-                    loading="lazy"
-                  />
-                  <span className="ba-label">Before</span>
+          {/* Ledger List */}
+          <div className="ledger-list">
+            {filteredItems.map((item, index) => (
+              <article key={item.id} className="rowA" data-category={item.category}>
+                <div className="ba-plain">
+                  <div className="ba-photo-box">
+                    <img
+                      src={item.beforeImg}
+                      alt={item.altBefore}
+                      loading={index < 2 ? 'eager' : 'lazy'}
+                    />
+                    <span className="ba-tag before-tag">Before</span>
+                  </div>
+                  <div className="ba-photo-box">
+                    <img
+                      src={item.afterImg}
+                      alt={item.altAfter}
+                      loading={index < 2 ? 'eager' : 'lazy'}
+                    />
+                    <span className="ba-tag after-tag">After</span>
+                  </div>
                 </div>
-                <div style={{ borderLeft: '1px solid rgba(255, 255, 255, 0.3)' }}>
-                  <img
-                    src={item.after}
-                    alt={`After Treatment - ${item.alt}`}
-                    loading="lazy"
-                  />
-                  <span className="ba-label">After</span>
+
+                <div className="ledger-info">
+                  <h2 className="ledger-title">{item.title}</h2>
+                  <div className="ledger-meta-chips">
+                    <span className="meta-chip">
+                      <span className="meta-chip-label">Area:</span>
+                      <span className="meta-chip-val">{item.area}</span>
+                    </span>
+                    <span className="meta-chip">
+                      <span className="meta-chip-label">Timeline:</span>
+                      <span className="meta-chip-val">{item.timeline}</span>
+                    </span>
+                  </div>
+                  <a
+                    href={item.bookingUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="button box-shadow-smooth ledger-btn"
+                  >
+                    Book This Treatment <img className="arrow" src="/assets/img/_defaults/arrow-right-white.svg" alt="arrow right icon" />
+                  </a>
                 </div>
-              </div>
+
+                <div className="ledger-timeline-col">
+                  <div className="timeline-badge-card">
+                    <div className="timeline-badge-header">
+                      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                        <circle cx="12" cy="12" r="10" />
+                        <polyline points="12 6 12 12 16 14" />
+                      </svg>
+                      <span>Timeline</span>
+                    </div>
+                    <div className="timeline-badge-value">{item.timelineCardValue}</div>
+                    <div className="timeline-badge-area">{item.timelineCardArea}</div>
+                  </div>
+                </div>
+              </article>
             ))}
           </div>
         </div>

@@ -2,109 +2,28 @@
 import Link from 'next/link';
 import React, { useEffect, useState } from 'react';
 import TestimonialSlider from './components/TestimonialSlider';
+import ScheduleConsultForm from '@/app/components/ScheduleConsultForm';
+import BannerSlider from './components/BannerSlider';
 
 export default function Home() {
   const [activeProcedure, setActiveProcedure] = useState<number | null>(null);
   const [activeTab, setActiveTab] = useState(0);
-  const [showAiPopup, setShowAiPopup] = useState(false);
 
   useEffect(() => {
     document.body.classList.add('home');
-    const timer = setTimeout(() => {
-      setShowAiPopup(true);
-    }, 1000);
-
-    // Hero masthead image slideshow (Ken Burns effect)
-    const images = document.querySelectorAll<HTMLImageElement>('.home .masthead__image img');
-    let slideshowInterval: NodeJS.Timeout | undefined;
-
-    if (images.length > 1) {
-      const updateImageMargin = () => {
-        images.forEach((img) => {
-          const w = img.offsetWidth || img.naturalWidth;
-          if (w) img.style.marginLeft = `${-w / 2}px`;
-        });
-      };
-
-      updateImageMargin();
-      images.forEach((img) => {
-        if (!img.complete) {
-          img.addEventListener('load', updateImageMargin);
-        }
-      });
-      window.addEventListener('resize', updateImageMargin);
-
-      // Ensure first image has 'fx' class initially
-      images[0].classList.add('fx');
-
-      let i = 1;
-      const numberOfImages = images.length;
-
-      slideshowInterval = setInterval(() => {
-        if (i === numberOfImages) {
-          i = 0;
-        }
-
-        images[i].classList.add('fx');
-
-        if (i === 0) {
-          images[numberOfImages - 2].classList.remove('fx');
-        } else if (i === 1) {
-          images[numberOfImages - 1].classList.remove('fx');
-        } else if (i > 1) {
-          images[i - 2].classList.remove('fx');
-        }
-
-        i++;
-      }, 7000);
-
-      return () => {
-        document.body.classList.remove('home');
-        clearTimeout(timer);
-        if (slideshowInterval) clearInterval(slideshowInterval);
-        window.removeEventListener('resize', updateImageMargin);
-      };
-    }
 
     return () => {
       document.body.classList.remove('home');
-      clearTimeout(timer);
     };
   }, []);
 
   return (
     <main>
-      <section className="masthead pattern-bg-home bg-image animate zoomOutFadeInBg overflow-visible box-shadow-smooth mb175" style={{ '--bgImage': 'url(/assets/img/bg/marble-grey.jpg)' } as React.CSSProperties}>
-        <div className="masthead__image box-shadow-smooth">
-          <img className="fx" src="/assets/img/masthead/home/01.jpg" alt="Med Spa Plantation, FL  Plantation" />
-          <img src="/assets/img/masthead/home/02.jpg" alt="Med Spa Plantation, FL  Plantation" />
-          <img src="/assets/img/masthead/home/03.jpg" alt="Med Spa Plantation, FL  Plantation" />
-          <img src="/assets/img/masthead/home/04.jpg" alt="Med Spa Plantation, FL  Plantation" />
-        </div>
-        <div className="masthead__content text-center">
-          <img className="animate fadeUp mb35" src="/assets/img/icon.svg" alt="Med Spa Plantation, FL  Plantation" />
-          <p className="animate fadeUp title-home uppercase accent-color mb35 white-tablet">Rooted in <span className="title-home-green block pt30" style={{ color: '#004438' }}>Rebirth</span></p>
-          <h1 className="animate fadeUp accent-color subhead white-tablet">Holistic Aesthetics <span className="block animate strikethrough pt25-tablet">&amp; Wellness Treatments</span> </h1>
-        </div>
-      </section>
-      <section className="mb175">
-        <div className="container">
-          <div className="text-center animate fadeIn" style={{ margin: '0 auto' }}>
-            <Link href="/transformation/" className="ai-banner-link">
-              <img
-                src="/assets/img/bg/Aesthetic Wellness AI Experience Popup Banner.webp"
-                alt="Aesthetic Wellness AI Experience Banner"
-                className="ai-banner-img"
-              />
-            </Link>
-          </div>
-        </div>
-      </section>
+      <BannerSlider />
       <section className="mb225">
         <div className="container">
           <div className="mw1300">
             <div className="text-center mb75">
-              <img className="animate fadeUp mb50" src="/assets/img/icon.svg" alt="Med Spa Plantation, FL  Plantation" />
               <h3 className="title-md uppercase accent-color animate fadeIn">Your <span className="title-lg ps10" style={{ color: '#004438' }}>Metamorphosis</span> Awaits</h3>
               <h2 className="subhead accent-color strikethrough animate fadeIn">Samsara Aesthetics &amp; Wellness</h2>
             </div>
@@ -123,14 +42,14 @@ export default function Home() {
                   full potential, we make room for our most vibrant qualities to flourish. Embrace your
                   reimagining and design the life you want for yourself at our Plantation <strong>Med
                     Spa</strong>.</p>
-                <Link href="/consultation/" className="button box-shadow-smooth">Book Now <img className="arrow"
+                <Link href="https://samsaraaestheticswellness.myaestheticrecord.com/online-booking" className="button box-shadow-smooth">Book Now <img className="arrow"
                   src="/assets/img/_defaults/arrow-right-white.svg" alt="arrow right icon" /></Link>
               </div>
             </div>
           </div>
         </div>
       </section>
-      <section className="mb200">
+      <section className="mb50">
         <div className="container">
           <div className="mw1000">
             <Link href="/about/vip-membership/"><img src="/assets/img/feature/wellness/11.jpg"
@@ -544,7 +463,7 @@ export default function Home() {
       </section>
 
       <TestimonialSlider />
-      <section className="mb175 pv50 bg-image animate zoomOutFadeInBg" style={{ '--bgImage': 'url(/assets/img/bg/marble-grey.jpg)' } as React.CSSProperties}>
+      {/* <section className="mb175 pv50 bg-image animate zoomOutFadeInBg" style={{ '--bgImage': 'url(/assets/img/bg/marble-grey.jpg)' } as React.CSSProperties}>
         <div className="container">
           <div className="mw1300">
             <div className="mw850 text-center mb75">
@@ -576,7 +495,7 @@ export default function Home() {
             </div>
           </div>
         </div>
-      </section>
+      </section> */}
       <section className="pv75 bg-image animate zoomOutBg" style={{ '--bgImage': 'url(/assets/img/bg/marble-green-01.jpg)' } as React.CSSProperties}>
         <div className="container ps75">
           <div className="mw1600">
@@ -590,95 +509,7 @@ export default function Home() {
                     aesthetics, wellness, and long-term confidence.</p>
                 </div>
                 <div className="flexy-item animate fadeIn">
-                  <div className="contact-form">
-                    <form noValidate action="https://formspree.io/f/mldenkyz" method="POST" className="form" name="contactForm" aria-label="Contact Form">
-                      <div className="input-wrap text is-one-third">
-                        <input name="FullName" aria-label="Full Name" placeholder="Full Name*" type="text" aria-required="true" required />
-                      </div>
-                      <div className="input-wrap text is-one-third">
-                        <input pattern="[\+]?[0-9]{0,2}[\-\s\.]?[\(]?[0-9]{3}[\)]?[\-\s\.]?[0-9]{3}[\-\s\.]?[0-9]{4,6}" name="Phone" aria-label="Phone Number" placeholder="Phone Number*" type="tel" aria-required="true" required />
-                      </div>
-                      <div className="input-wrap text is-one-third">
-                        <input name="Email" aria-label="Email Address" placeholder="Email Address*" type="email" aria-required="true" required />
-                      </div>
-                      <div className="input-wrap is-one-third">
-                        <span className="select">
-                          <select id="Schedule" name="ProcedureOfInterest" aria-label="Procedure of Interest" aria-required="true" required defaultValue="">
-                            <option value="" disabled>Procedure of Interest*</option>
-                            <option value="Injectables">Injectables</option>
-                            <option value="Dermal Fillers and Neuromodulators">Dermal Fillers and
-                              Neuromodulators</option>
-                            <option value="PRP/PRF Treatments">PRP/PRF Treatments</option>
-                            <option value="Laser and Energy Treatments">Laser and Energy Treatments
-                            </option>
-                            <option value="Plasma Skin Tightening">Plasma Skin Tightening</option>
-                            <option value="IPL">IPL</option>
-                            <option value="Morpheus8">Morpheus8</option>
-                            <option value="Laser Hair Removal ">Laser Hair Removal </option>
-                            <option value="Forma">Forma</option>
-                            <option value="Wellness">Wellness</option>
-                            <option value="Physician Guided Weight Loss Therapy">Physician Guided
-                              Weight Loss Therapy</option>
-                            <option value="Massage Therapy">Massage Therapy</option>
-                            <option value="IV Hydration">IV Hydration</option>
-                            <option value="Injectables for Wellness">Injectables for Wellness
-                            </option>
-                            <option value="Lymphatic Drainage ">Lymphatic Drainage </option>
-                            <option value="Life Coaching and Mental Wellness">Life Coaching and
-                              Mental Wellness</option>
-                            <option value="Skincare">Skincare</option>
-                            <option value="Chemical Peels">Chemical Peels</option>
-                            <option value="HydraFacials">HydraFacials</option>
-                          </select>
-                        </span>
-                      </div>
-                      <div className="input-wrap is-one-third">
-                        <span className="select">
-                          <select id="HearOfUs" name="HearOfUs" aria-label="How Did You Hear Of Us*" required defaultValue="">
-                            <option value="" disabled>How Did You Hear of Us?*</option>
-                            <option value="Website">Website</option>
-                            <option value="Friend">Friend</option>
-                            <option value="Google Search">Google Search</option>
-                            <option value="Instagram">Instagram</option>
-                            <option value="Facebook">Facebook</option>
-                            <option value="Previous Patient">Previous Patient</option>
-                            <option value="Other">Other</option>
-                          </select>
-                        </span>
-                      </div>
-                      <div className="input-wrap is-one-third">
-                        <span className="select">
-                          <select id="BestTime" name="BestTime" aria-label="Best Time To Reach You" required defaultValue="">
-                            <option value="" disabled>Best Time To Reach You*</option>
-                            <option value="Morning">Morning</option>
-                            <option value="Afternoon">Afternoon</option>
-                          </select>
-                        </span>
-                      </div>
-                      <div className="input-wrap text is-full">
-                        <textarea id="Message" name="Message" aria-label="Message" data-hj-whitelist placeholder="How can we assist your aesthetic needs?" maxLength={280} required defaultValue={""} />
-                      </div>
-                      <div className="input-wrap is-full checkbox mb10" style={{ paddingTop: 0 }}>
-                        <input name="TextOptin" aria-label="Yes Opt-in to Text" placeholder="Yes Opt-in to Text" type="checkbox" defaultValue="Yes Opt-in to Text" />
-                        <p className="optin-terms">By checking this box you agree to receive SMS messages
-                          from Samsara Aesthetics &amp; Wellness regarding appointments and specials.
-                          Standard messaging rates may apply</p>
-                      </div>
-                      <div className="input-wrap text is-full" style={{ display: 'none' }}>
-                        <input name="ZipCode" aria-label="Zip Code (Do Not Fill Out)" aria-hidden="true" placeholder="Zip Code*" type="text" />
-                      </div>
-                      <div className="input-wrap">
-                        <button type="submit" aria-label="Submit Form" className="button light box-shadow-smooth mb0">Submit <img src="/assets/img/_defaults/arrow-right-highlight.svg" title="Submit Form" alt="right arrow" /></button>
-                      </div>
-                      <div className="input-wrap">
-                        <span className="title-sm text-center consult-phone">
-                          <a className="tel-link" href="tel:(954) 688-7255" onClick={() => typeof window !== 'undefined' && (window as any).eval(`gtag('event', 'phone_number_click');`)} aria-label="Call Samsara Aesthetics & Wellness">(954) 688-7255</a>
-                        </span>
-                      </div>
-                      <input type="hidden" name="gtagevent" defaultValue="contact_form" />
-                      <input type="hidden" name="LeadSource" defaultValue="Organic" />
-                    </form>
-                  </div>
+                  <ScheduleConsultForm />
                 </div>
               </div>
             </div>
@@ -695,39 +526,6 @@ export default function Home() {
           </svg>
           <span className="call-widget-tooltip">(954) 688-7255</span>
         </a>
-      </div>
-
-      {/* AI Experience Popup Banner */}
-      <div
-        className={`ai-experience-popup-overlay ${showAiPopup ? 'show' : ''}`}
-        id="aiExperiencePopup"
-        onClick={(e) => {
-          if (e.target === e.currentTarget) {
-            setShowAiPopup(false);
-          }
-        }}
-      >
-        <div className="ai-experience-popup-container">
-          <button
-            className="ai-experience-popup-close"
-            id="aiExperiencePopupClose"
-            aria-label="Close Popup"
-            onClick={() => setShowAiPopup(false)}
-          >
-            &times;
-          </button>
-          <Link
-            href="/transformation/"
-            className="ai-experience-popup-link"
-            onClick={() => setShowAiPopup(false)}
-          >
-            <img
-              src="/assets/img/bg/Aesthetic Wellness AI Experience Popup Banner.webp"
-              alt="Aesthetic Wellness AI Experience Popup Banner"
-              className="ai-experience-popup-img"
-            />
-          </Link>
-        </div>
       </div>
     </main>
   );
