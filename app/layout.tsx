@@ -4,6 +4,7 @@ import "./globals.css";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 import ScrollObserver from "./components/ScrollObserver";
+import CallWidget from "./components/CallWidget";
 
 export const metadata: Metadata = {
   title: "Med Spa Plantation, FL | Samsara Aesthetics & Wellness",
@@ -61,6 +62,7 @@ export default function RootLayout({
         <Header />
         {children}
         <Footer />
+        <CallWidget />
         <elevenlabs-convai agent-id="agent_1801m59qba7ffd4beafxmgjefdz4"></elevenlabs-convai>
         <script src="https://unpkg.com/@elevenlabs/convai-widget-embed" async type="text/javascript"></script>
       </body>

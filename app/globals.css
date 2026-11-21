@@ -2684,6 +2684,14 @@ section[data-ipj]~.in-page-jump a.scrolled:nth-child(2) svg {
 	display: none !important;
 }
 
+/* ElevenLabs AI Chat Widget - Position cleanly on desktop/laptop above the floating call widget */
+elevenlabs-convai {
+	position: fixed !important;
+	bottom: 105px !important;
+	right: 30px !important;
+	z-index: 9998 !important;
+}
+
 @media (max-width: 840px) {
 	.mobile-bottom-bar {
 		display: flex !important;
