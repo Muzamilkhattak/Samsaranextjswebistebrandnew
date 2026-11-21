@@ -197,22 +197,10 @@ export default function ThankYou() {
           }
         }
 
-        /* Mobile Responsive */
-        @media (max-width: 768px) {
+        /* Mobile Responsive - Hide on mobile so it only shows on desktop and laptop */
+        @media (max-width: 840px) {
           .call-widget {
-            bottom: 20px;
-            right: 20px;
-          }
-          .call-widget a {
-            width: 55px;
-            height: 55px;
-          }
-          .call-widget svg {
-            width: 24px;
-            height: 24px;
-          }
-          .call-widget-tooltip {
-            display: none;
+            display: none !important;
           }
         }
       `}} />

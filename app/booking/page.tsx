@@ -180,7 +180,7 @@ export default function Booking() {
         @keyframes pulse { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.05); } }
         @keyframes ripple { 0% { transform: scale(1); opacity: 0.5; } 100% { transform: scale(1.3); opacity: 0; } }
         @keyframes fadeInUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
-        @media (max-width: 768px) { .call-widget { bottom: 20px; right: 20px; } .call-widget a { width: 55px; height: 55px; } .call-widget svg { width: 24px; height: 24px; } .call-widget-tooltip { display: none; } }
+        @media (max-width: 840px) { .call-widget { display: none !important; } }
       `}} />
 
       <div className="d-flex justify-content-center align-items-center flex-column vh-100">

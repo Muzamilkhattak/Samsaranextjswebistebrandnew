@@ -2693,6 +2693,11 @@ section[data-ipj]~.in-page-jump a.scrolled:nth-child(2) svg {
 		display: none !important;
 	}
 
+	/* Hide floating call widget on mobile devices */
+	.call-widget {
+		display: none !important;
+	}
+
 	/* Elevate ElevenLabs widget cleanly above the mobile bottom bar */
 	elevenlabs-convai {
 		position: fixed !important;
@@ -20659,25 +20664,10 @@ body .uwy.userway_p1 .uai {
 	}
 }
 
-/* Mobile Responsive */
-@media (max-width: 768px) {
+/* Mobile Responsive - Hide Call Widget on mobile devices globally */
+@media (max-width: 840px) {
 	.call-widget {
-		bottom: 20px;
-		right: 20px;
-	}
-
-	.call-widget a {
-		width: 55px;
-		height: 55px;
-	}
-
-	.call-widget svg {
-		width: 24px;
-		height: 24px;
-	}
-
-	.call-widget-tooltip {
-		display: none;
+		display: none !important;
 	}
 }
 
