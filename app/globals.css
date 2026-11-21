@@ -2579,42 +2579,151 @@ section[data-ipj]~.in-page-jump a.scrolled:nth-child(2) svg {
 	max-height: 75vh
 }
 
-.mobile-cta {
+/* ==========================================================================
+   Mobile Floating Bottom Quick Actions Widget (Call Now & Book Now)
+   ========================================================================== */
+.mobile-bottom-bar {
+	display: none;
 	position: fixed;
-	bottom: 0;
-	width: 100%;
+	bottom: max(14px, env(safe-area-inset-bottom, 14px));
+	left: 12px;
+	right: 12px;
+	margin: 0 auto;
+	max-width: 420px;
+	height: 52px;
+	background: rgba(255, 255, 255, 0.98);
+	border-radius: 9999px;
+	padding: 5px 8px;
+	align-items: center;
+	gap: 8px;
+	box-shadow: 0 8px 30px rgba(0, 0, 0, 0.16), 0 2px 8px rgba(0, 68, 56, 0.08);
+	border: 1px solid rgba(0, 68, 56, 0.12);
+	z-index: 9999;
+	box-sizing: border-box;
+	backdrop-filter: blur(10px);
+	-webkit-backdrop-filter: blur(10px);
+}
+
+.mobile-bar-call-icon {
+	width: 40px;
+	height: 40px;
+	min-width: 40px;
+	border-radius: 50%;
+	background: #fbf8f3;
+	border: 1px solid rgba(181, 165, 150, 0.35);
 	display: flex;
 	align-items: center;
-	z-index: 10;
-	display: none;
-	transform: translateY(100%);
-	transition: transform 0.4s ease
+	justify-content: center;
+	color: #004438;
+	text-decoration: none;
+	transition: all 0.2s ease;
+	flex-shrink: 0;
+	box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
 }
 
-.scrolled .mobile-cta {
-	transform: none
+.mobile-bar-call-icon:active {
+	transform: scale(0.92);
+	background: #efe7dc;
 }
 
-@media (max-width:840px) {
+.mobile-bar-call-btn {
+	flex: 1 1 0;
+	height: 40px;
+	border-radius: 9999px;
+	background: #ffffff;
+	border: 1.5px solid rgba(0, 68, 56, 0.3);
+	color: #004438;
+	font-family: 'novecento-sans', -apple-system, BlinkMacSystemFont, sans-serif;
+	font-size: 13px;
+	font-weight: 700;
+	letter-spacing: 0.5px;
+	text-transform: uppercase;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	text-decoration: none;
+	transition: all 0.2s ease;
+	white-space: nowrap;
+	padding: 0 10px;
+}
+
+.mobile-bar-call-btn:active {
+	background: #f4f6f5;
+	border-color: #004438;
+	transform: scale(0.97);
+}
+
+.mobile-bar-book-btn {
+	flex: 1.25 1 0;
+	height: 40px;
+	border-radius: 9999px;
+	background: #004438;
+	color: #ffffff !important;
+	font-family: 'novecento-sans', -apple-system, BlinkMacSystemFont, sans-serif;
+	font-size: 13px;
+	font-weight: 700;
+	letter-spacing: 0.5px;
+	text-transform: uppercase;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	text-decoration: none;
+	box-shadow: 0 3px 12px rgba(0, 68, 56, 0.3);
+	transition: all 0.2s ease;
+	white-space: nowrap;
+	padding: 0 12px;
+}
+
+.mobile-bar-book-btn:active {
+	background: #00332a;
+	transform: scale(0.97);
+	box-shadow: 0 1px 6px rgba(0, 68, 56, 0.25);
+}
+
+.mobile-cta {
+	display: none !important;
+}
+
+@media (max-width: 840px) {
+	.mobile-bottom-bar {
+		display: flex !important;
+	}
+
 	.mobile-cta {
-		display: flex
+		display: none !important;
+	}
+
+	/* Elevate ElevenLabs widget cleanly above the mobile bottom bar */
+	elevenlabs-convai {
+		position: fixed !important;
+		bottom: calc(76px + env(safe-area-inset-bottom, 0px)) !important;
+		right: 16px !important;
+		z-index: 9998 !important;
 	}
 }
 
-.mobile-cta a {
-	flex: 1 1 0;
-	display: inline-flex;
-	padding: 10px 15px;
-	background: #004438;
-	text-align: center;
-	justify-content: center;
-	color: white;
-	font-weight: bold;
-	padding-bottom: 15px
-}
+@media (max-width: 360px) {
+	.mobile-bottom-bar {
+		left: 8px;
+		right: 8px;
+		gap: 6px;
+		padding: 4px 6px;
+		height: 48px;
+	}
 
-.mobile-cta a:nth-child(2) {
-	background: #b5a596
+	.mobile-bar-call-icon {
+		width: 36px;
+		height: 36px;
+		min-width: 36px;
+	}
+
+	.mobile-bar-call-btn,
+	.mobile-bar-book-btn {
+		height: 36px;
+		font-size: 11.5px;
+		letter-spacing: 0.3px;
+		padding: 0 8px;
+	}
 }
 
 .swiper-controls {
