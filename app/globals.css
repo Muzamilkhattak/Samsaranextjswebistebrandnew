@@ -2593,7 +2593,7 @@ section[data-ipj]~.in-page-jump a.scrolled:nth-child(2) svg {
 	height: 52px;
 	background: rgba(255, 255, 255, 0.98);
 	border-radius: 9999px;
-	padding: 5px 8px;
+	padding: 5px 8px 5px 10px;
 	align-items: center;
 	gap: 8px;
 	box-shadow: 0 8px 30px rgba(0, 0, 0, 0.16), 0 2px 8px rgba(0, 68, 56, 0.08);
@@ -2661,7 +2661,7 @@ section[data-ipj]~.in-page-jump a.scrolled:nth-child(2) svg {
 }
 
 .mobile-bar-book-btn {
-	flex: 1.25 1 0;
+	flex: 1 1 auto;
 	height: 40px;
 	border-radius: 9999px;
 	background: #004438;
@@ -2678,7 +2678,7 @@ section[data-ipj]~.in-page-jump a.scrolled:nth-child(2) svg {
 	box-shadow: 0 3px 12px rgba(0, 68, 56, 0.3);
 	transition: all 0.2s ease;
 	white-space: nowrap;
-	padding: 0 12px;
+	padding: 0 16px;
 }
 
 .mobile-bar-book-btn:active {
@@ -2701,21 +2701,19 @@ section[data-ipj]~.in-page-jump a.scrolled:nth-child(2) svg {
 
 /* Mobile Bar ElevenLabs slot */
 .mobile-bar-elevenlabs {
-	flex: 1 1 0;
+	flex: 0 0 auto;
 	height: 40px;
 	display: flex;
 	align-items: center;
-	justify-content: center;
-	min-width: 0;
 	position: relative;
+	padding-left: 2px;
 }
 
 .mobile-bar-elevenlabs elevenlabs-convai {
 	display: flex !important;
 	align-items: center !important;
-	justify-content: center !important;
-	width: 100% !important;
 	height: 100% !important;
+	width: auto !important;
 	position: relative !important;
 	bottom: auto !important;
 	right: auto !important;

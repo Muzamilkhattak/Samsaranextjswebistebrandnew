@@ -47,33 +47,48 @@ export default function Header() {
           const style = document.createElement('style');
           style.id = 'embedded-convai-style';
           style.textContent = `
+            :host {
+              position: relative !important;
+              inset: auto !important;
+              width: auto !important;
+              height: 100% !important;
+              display: flex !important;
+              align-items: center !important;
+            }
             .overlay {
               position: static !important;
               inset: auto !important;
               padding: 0 !important;
               display: flex !important;
               align-items: center !important;
-              width: 100% !important;
+              width: auto !important;
               height: 100% !important;
             }
             .overlay > div {
-              width: 100% !important;
+              position: relative !important;
+              inset: auto !important;
+              padding: 0 !important;
+              width: auto !important;
               display: flex !important;
               align-items: center !important;
-              justify-content: center !important;
             }
             .bg-base.shadow-md {
               box-shadow: none !important;
-              padding: 0 8px !important;
+              padding: 0 4px !important;
               min-height: 40px !important;
               height: 40px !important;
-              width: 100% !important;
+              width: auto !important;
               display: flex !important;
               align-items: center !important;
-              justify-content: center !important;
               border-radius: 9999px !important;
-              border: 1.5px solid rgba(0, 68, 56, 0.3) !important;
-              background: #ffffff !important;
+              border: none !important;
+              background: transparent !important;
+            }
+            [class*="opacity-30"],
+            a[href*="elevenlabs.io"],
+            [class*="poweredBy"],
+            [line-height\\:var\\(--el-overlay-padding\\)] {
+              display: none !important;
             }
             .sheet {
               position: fixed !important;
