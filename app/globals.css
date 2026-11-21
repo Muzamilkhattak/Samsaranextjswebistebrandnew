@@ -2604,7 +2604,8 @@ section[data-ipj]~.in-page-jump a.scrolled:nth-child(2) svg {
 	-webkit-backdrop-filter: blur(10px);
 }
 
-.mobile-bar-call-icon {
+.mobile-bar-call-icon,
+.mobile-bar-ai-icon {
 	width: 40px;
 	height: 40px;
 	min-width: 40px;
@@ -2619,14 +2620,18 @@ section[data-ipj]~.in-page-jump a.scrolled:nth-child(2) svg {
 	transition: all 0.2s ease;
 	flex-shrink: 0;
 	box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+	cursor: pointer;
+	padding: 0;
 }
 
-.mobile-bar-call-icon:active {
+.mobile-bar-call-icon:active,
+.mobile-bar-ai-icon:active {
 	transform: scale(0.92);
 	background: #efe7dc;
 }
 
-.mobile-bar-call-btn {
+.mobile-bar-call-btn,
+.mobile-bar-ai-btn {
 	flex: 1 1 0;
 	height: 40px;
 	border-radius: 9999px;
@@ -2645,9 +2650,11 @@ section[data-ipj]~.in-page-jump a.scrolled:nth-child(2) svg {
 	transition: all 0.2s ease;
 	white-space: nowrap;
 	padding: 0 10px;
+	cursor: pointer;
 }
 
-.mobile-bar-call-btn:active {
+.mobile-bar-call-btn:active,
+.mobile-bar-ai-btn:active {
 	background: #f4f6f5;
 	border-color: #004438;
 	transform: scale(0.97);
@@ -2684,11 +2691,11 @@ section[data-ipj]~.in-page-jump a.scrolled:nth-child(2) svg {
 	display: none !important;
 }
 
-/* ElevenLabs AI Chat Widget - Position cleanly on desktop/laptop above the floating call widget */
+/* ElevenLabs AI Chat Widget - Position in the bottom corner on desktop/laptop */
 elevenlabs-convai {
 	position: fixed !important;
-	bottom: 105px !important;
-	right: 30px !important;
+	bottom: 20px !important;
+	right: 20px !important;
 	z-index: 9998 !important;
 }
 
@@ -2706,12 +2713,12 @@ elevenlabs-convai {
 		display: none !important;
 	}
 
-	/* Elevate ElevenLabs widget cleanly above the mobile bottom bar */
+	/* On mobile, elevenlabs-convai fills viewport when expanded */
 	elevenlabs-convai {
 		position: fixed !important;
-		bottom: calc(76px + env(safe-area-inset-bottom, 0px)) !important;
-		right: 16px !important;
-		z-index: 9998 !important;
+		bottom: 0 !important;
+		right: 0 !important;
+		z-index: 99999 !important;
 	}
 }
 
@@ -2724,12 +2731,14 @@ elevenlabs-convai {
 		height: 48px;
 	}
 
+	.mobile-bar-ai-icon,
 	.mobile-bar-call-icon {
 		width: 36px;
 		height: 36px;
 		min-width: 36px;
 	}
 
+	.mobile-bar-ai-btn,
 	.mobile-bar-call-btn,
 	.mobile-bar-book-btn {
 		height: 36px;
@@ -20569,8 +20578,8 @@ body .uwy.userway_p1 .uai {
    ======================================================== */
 .call-widget {
 	position: fixed;
-	bottom: 30px;
-	right: 30px;
+	bottom: 95px;
+	right: 20px;
 	z-index: 9999;
 	animation: fadeInUp 0.5s ease-in-out;
 }
