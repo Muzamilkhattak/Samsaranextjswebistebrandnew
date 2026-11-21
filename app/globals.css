@@ -2691,12 +2691,38 @@ section[data-ipj]~.in-page-jump a.scrolled:nth-child(2) svg {
 	display: none !important;
 }
 
-/* ElevenLabs AI Chat Widget - Position in the bottom corner on desktop/laptop */
-elevenlabs-convai {
+/* Desktop: ElevenLabs in bottom corner */
+.desktop-convai {
 	position: fixed !important;
 	bottom: 20px !important;
 	right: 20px !important;
 	z-index: 9998 !important;
+}
+
+/* Mobile Bar ElevenLabs slot */
+.mobile-bar-elevenlabs {
+	flex: 1 1 0;
+	height: 40px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	min-width: 0;
+	position: relative;
+}
+
+.mobile-bar-elevenlabs elevenlabs-convai {
+	display: flex !important;
+	align-items: center !important;
+	justify-content: center !important;
+	width: 100% !important;
+	height: 100% !important;
+	position: relative !important;
+	bottom: auto !important;
+	right: auto !important;
+	left: auto !important;
+	top: auto !important;
+	z-index: 1 !important;
+	--el-overlay-padding: 0px !important;
 }
 
 @media (max-width: 840px) {
@@ -2713,12 +2739,9 @@ elevenlabs-convai {
 		display: none !important;
 	}
 
-	/* On mobile, elevenlabs-convai fills viewport when expanded */
-	elevenlabs-convai {
-		position: fixed !important;
-		bottom: 0 !important;
-		right: 0 !important;
-		z-index: 99999 !important;
+	/* Hide standalone desktop elevenlabs on mobile devices */
+	.desktop-convai {
+		display: none !important;
 	}
 }
 
