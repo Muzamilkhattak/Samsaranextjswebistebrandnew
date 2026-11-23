@@ -22503,8 +22503,9 @@ body.home .masthead.ba-results-masthead h1 span,
 }
 
 /* ==========================================================================
-   Gift Cards & Before/After (Mobile Menu)
+   Gift Cards, GlyMed+ & Before/After (Mobile Menu)
    ========================================================================== */
+.mobile-glymed-menu,
 .mobile-gift-card-menu,
 .mobile-ba-menu {
 	display: none;
@@ -22512,6 +22513,7 @@ body.home .masthead.ba-results-masthead h1 span,
 	border-bottom: 1px solid rgba(255, 255, 255, 0.15);
 }
 
+.mobile-glymed-link,
 .mobile-gift-card-link,
 .mobile-ba-link {
 	display: inline-flex;
@@ -22527,6 +22529,7 @@ body.home .masthead.ba-results-masthead h1 span,
 	transition: color 0.3s ease;
 }
 
+.mobile-glymed-link svg,
 .mobile-gift-card-link svg,
 .mobile-ba-link svg {
 	fill: #b5a596;
@@ -22534,11 +22537,13 @@ body.home .masthead.ba-results-masthead h1 span,
 	transition: fill 0.3s ease;
 }
 
+.mobile-glymed-link:hover,
 .mobile-gift-card-link:hover,
 .mobile-ba-link:hover {
 	color: #b5a596;
 }
 
+.mobile-glymed-link:hover svg,
 .mobile-gift-card-link:hover svg,
 .mobile-ba-link:hover svg {
 	fill: white;
@@ -22547,8 +22552,55 @@ body.home .masthead.ba-results-masthead h1 span,
 /* Display inside mobile hamburger dropdown */
 @media (max-width: 1024px) {
 
+	.mobile-glymed-menu,
 	.mobile-gift-card-menu,
 	.mobile-ba-menu {
 		display: block;
+	}
+}
+
+/* ==========================================================================
+   Shop GlyMed+ Button (Desktop Mega Menu)
+   ========================================================================== */
+.takeover-glymed-btn {
+	display: inline-flex;
+	align-items: center;
+	gap: 8px;
+	color: #ffffff;
+	font-family: 'novecento-sans', sans-serif;
+	font-size: 13px;
+	font-weight: 600;
+	letter-spacing: 1.4px;
+	text-transform: uppercase;
+	text-decoration: none;
+	border: 1.5px solid #b5a596;
+	border-radius: 3px;
+	padding: 8px 18px;
+	transition: all 0.3s ease;
+	white-space: nowrap;
+	position: absolute;
+	left: calc(50% + 23%);
+	top: 50%;
+	transform: translate(-50%, -50%);
+}
+
+.takeover-glymed-btn:hover {
+	background: linear-gradient(253deg, #613e19 13.22%, #e8b783 50.39%, #623f1b 82.95%);
+	border-color: transparent;
+	color: white;
+}
+
+.takeover-glymed-btn .shop-icon {
+	fill: #b5a596;
+	transition: fill 0.3s ease;
+}
+
+.takeover-glymed-btn:hover .shop-icon {
+	fill: white;
+}
+
+@media (max-width: 1024px) {
+	.takeover-glymed-btn {
+		display: none !important;
 	}
 }

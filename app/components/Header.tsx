@@ -178,6 +178,19 @@ export default function Header() {
           <Link href="/" className="takeover-logo">
             <img src="/assets/img/logo-new.svg" alt="Samsara Aesthetics & Wellness Logo" />
           </Link>
+          <a
+            href="https://glymedplus.com/store/samsaramedspa"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="takeover-glymed-btn"
+            aria-label="Shop GlyMed+"
+            onClick={closeMenu}
+          >
+            <svg className="shop-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="16" height="16" fill="currentColor" aria-hidden="true">
+              <path d="M19 6h-2c0-2.76-2.24-5-5-5S7 3.24 7 6H5c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V8c0-1.1-.9-2-2-2zm-7-3c1.66 0 3 1.34 3 3H9c0-1.66 1.34-3 3-3zm7 17H5V8h14v12zm-7-8c-1.66 0-3-1.34-3-3H7c0 2.76 2.24 5 5 5s5-2.24 5-5h-2c0 1.66-1.34 3-3 3z" />
+            </svg>
+            Shop GlyMed+
+          </a>
           <button
             className="takeover-close-btn"
             onClick={(e) => { e.preventDefault(); e.stopPropagation(); toggleMenu(); }}
@@ -193,6 +206,20 @@ export default function Header() {
           <div className="mobile-contact">
             <Link href="https://samsaraaestheticswellness.myaestheticrecord.com/online-booking">Book Now</Link>
             <a href="tel:(954) 688-7255" onClick={() => typeof window !== 'undefined' && (window as any).eval(`gtag('event', 'phone_number_click');`)}>(954) 688-7255</a>
+          </div>
+          <div className="mobile-glymed-menu">
+            <a
+              href="https://glymedplus.com/store/samsaramedspa"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="mobile-glymed-link"
+              onClick={closeMenu}
+            >
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="18" height="18" fill="currentColor" aria-hidden="true">
+                <path d="M19 6h-2c0-2.76-2.24-5-5-5S7 3.24 7 6H5c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V8c0-1.1-.9-2-2-2zm-7-3c1.66 0 3 1.34 3 3H9c0-1.66 1.34-3 3-3zm7 17H5V8h14v12zm-7-8c-1.66 0-3-1.34-3-3H7c0 2.76 2.24 5 5 5s5-2.24 5-5h-2c0 1.66-1.34 3-3 3z" />
+              </svg>
+              Shop GlyMed+
+            </a>
           </div>
           <div className="mobile-gift-card-menu">
             <a
