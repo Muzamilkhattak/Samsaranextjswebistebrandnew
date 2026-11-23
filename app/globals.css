@@ -19742,6 +19742,19 @@ html.open {
 	line-height: 1.4
 }
 
+.title-green-bg.white,
+.bg-image .title-green-bg {
+	background: none !important;
+	-webkit-background-clip: initial !important;
+	-moz-background-clip: initial !important;
+	background-clip: initial !important;
+	-webkit-text-fill-color: #ffffff !important;
+	-moz-text-fill-color: #ffffff !important;
+	color: #ffffff !important;
+	-webkit-mask-image: none !important;
+	mask-image: none !important;
+}
+
 .subhead {
 	font-family: "proxima-nova";
 	font-size: min(max(14px, 1.4285714286vw), 20px);

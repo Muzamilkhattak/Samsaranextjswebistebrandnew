@@ -45,7 +45,7 @@ export default function AboutPage() {
             {/* Approach Section */}
             <div className="text-center animate fadeIn pv75 bg-image" style={{ '--bgImage': 'url(/assets/img/bg/marble-green-01.jpg)', borderRadius: '15px' } as React.CSSProperties}>
               <div className="mw900 margin-auto ph50">
-                <h3 className="title-md uppercase white mb35">Through Innovation & <span className="title-green-bg white">Holistic Care</span></h3>
+                <h3 className="title-md uppercase white mb35">Through Innovation & <span className="title-green-bg white" style={{ WebkitTextFillColor: '#ffffff', color: '#ffffff', background: 'none', WebkitMaskImage: 'none', maskImage: 'none' }}>Holistic Care</span></h3>
                 <p className="white mb25">Through innovative technology, holistic care, and a patient-first approach, we are committed to helping you become the best version of yourself.</p>
                 <p className="white">Whether you are seeking aesthetic enhancements, wellness support, or a complete self-care experience, <strong>Samsara Aesthetics & Wellness is here to guide you on your journey to renewed confidence, health, and beauty</strong>.</p>
               </div>
