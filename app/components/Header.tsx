@@ -141,31 +141,33 @@ export default function Header() {
             <Link className="navbar-brand" href="/" onClick={closeMenu}>
               <img className="navbar__logo" src="/assets/img/logo-new.svg" alt="Samsara Aesthetics & Wellness Logo" />
             </Link>
-            <a
-              className="gift-cards-btn navbar-link uppercase"
-              href="https://samsaraaestheticswellness.myaestheticrecord.com/online-booking/giftcards"
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label="Purchase Gift Cards"
-              onClick={closeMenu}
-            >
-              <svg className="gift-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="16" height="16" fill="currentColor" aria-hidden="true">
-                <path d="M20 7h-1.209A4.92 4.92 0 0 0 19 5.5C19 3.57 17.43 2 15.5 2c-1.622 0-2.705 1.482-3.404 2.555C11.57 3.515 10.5 2 8.5 2 6.57 2 5 3.57 5 5.5c0 .537.11 1.049.299 1.5H4c-1.103 0-2 .897-2 2v2c0 1.103.897 2 2 2v7c0 1.103.897 2 2 2h12c1.103 0 2-.897 2-2v-7c1.103 0 2-.897 2-2V9c0-1.103-.897-2-2-2zm-4.5-3c.827 0 1.5.673 1.5 1.5C17 6.914 15.374 8.44 14.019 9H12.1c.44-1.207 1.631-5 3.4-5zM7 5.5C7 4.673 7.673 4 8.5 4c1.769 0 2.96 3.793 3.4 5H9.981C8.626 8.44 7 6.914 7 5.5zM4 9h7v2H4V9zm2 11v-7h5v7H6zm12 0h-5v-7h5v7zm2-9h-7V9h7v2z" />
-              </svg>
-              Gift Cards
-            </a>
-            <div className="flexy">
-              <div className="flexy flexd-clmn">
-                <Link className="gold-gradient navbar-link mr50 uppercase" href="https://samsaraaestheticswellness.myaestheticrecord.com/online-booking" target="_blank" rel="noopener noreferrer" onClick={closeMenu}>Book Now<img className="arrow-right gold-arrow" src="/assets/img/_defaults/arrow-right-gold-gradient.svg" alt="right arrow" /></Link>
+            <div className="navbar-right-group">
+              <a
+                className="gift-cards-btn navbar-link uppercase"
+                href="https://samsaraaestheticswellness.myaestheticrecord.com/online-booking/giftcards"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Purchase Gift Cards"
+                onClick={closeMenu}
+              >
+                <svg className="gift-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="16" height="16" fill="currentColor" aria-hidden="true">
+                  <path d="M20 7h-1.209A4.92 4.92 0 0 0 19 5.5C19 3.57 17.43 2 15.5 2c-1.622 0-2.705 1.482-3.404 2.555C11.57 3.515 10.5 2 8.5 2 6.57 2 5 3.57 5 5.5c0 .537.11 1.049.299 1.5H4c-1.103 0-2 .897-2 2v2c0 1.103.897 2 2 2v7c0 1.103.897 2 2 2h12c1.103 0 2-.897 2-2v-7c1.103 0 2-.897 2-2V9c0-1.103-.897-2-2-2zm-4.5-3c.827 0 1.5.673 1.5 1.5C17 6.914 15.374 8.44 14.019 9H12.1c.44-1.207 1.631-5 3.4-5zM7 5.5C7 4.673 7.673 4 8.5 4c1.769 0 2.96 3.793 3.4 5H9.981C8.626 8.44 7 6.914 7 5.5zM4 9h7v2H4V9zm2 11v-7h5v7H6zm12 0h-5v-7h5v7zm2-9h-7V9h7v2z" />
+                </svg>
+                Gift Cards
+              </a>
+              <div className="flexy">
+                <div className="flexy flexd-clmn">
+                  <Link className="gold-gradient navbar-link mr50 uppercase" href="https://samsaraaestheticswellness.myaestheticrecord.com/online-booking" target="_blank" rel="noopener noreferrer" onClick={closeMenu}>Book Now<img className="arrow-right gold-arrow" src="/assets/img/_defaults/arrow-right-gold-gradient.svg" alt="right arrow" /></Link>
 
-              </div>
-              <div className="menu-button" aria-label="Menu Button" onClick={toggleMenu}>
-                <div>
-                  <span />
-                  <span />
-                  <span />
                 </div>
-                <label>Menu</label>
+                <div className="menu-button" aria-label="Menu Button" onClick={toggleMenu}>
+                  <div>
+                    <span />
+                    <span />
+                    <span />
+                  </div>
+                  <label>Menu</label>
+                </div>
               </div>
             </div>
           </div>
